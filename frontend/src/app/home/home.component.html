@@ -1,0 +1,14 @@
+<main class="main">
+  <div class="content">
+    <div class="left-side">
+      <h1>Welcome to Our App</h1>
+      <p *ngIf="!isLoggedIn">Get started by signing up or logging in.</p>
+      <p *ngIf="isLoggedIn">Welcome back! Explore your dashboard.</p>
+      <div class="button-group" *ngIf="!isLoggedIn">
+        <a href="/sign-up" class="button">Sign Up</a>
+        <a href="/login" class="button">Login</a>
+      </div>
+    </div>
+  </div>
+</main>
+

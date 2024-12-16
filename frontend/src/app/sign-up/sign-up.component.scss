@@ -1,0 +1,18 @@
+.sign-up-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.sign-up-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+app-auth-form {
+  display: block;
+  margin-top: 20px;
+}
