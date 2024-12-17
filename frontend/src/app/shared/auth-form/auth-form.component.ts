@@ -44,7 +44,6 @@ export class AuthFormComponent {
       if (this.authForm.controls['email'].hasError('email')) {
         this.errorMessage += ' Please enter a valid email address.';
       }
-      
       return;
     }
     if (!this.isLogin) {
@@ -65,7 +64,7 @@ export class AuthFormComponent {
       return;
     }
     if (this.authForm.controls['password'].value !== this.authForm.controls['confirmPassword'].value) {
-      this.errorMessage = 'Passwords do not match';
+      this.errorMessage = 'Passwords do not match.';
       return;
     }
     
