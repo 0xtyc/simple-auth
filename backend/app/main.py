@@ -10,7 +10,7 @@ app = FastAPI()
 
 # CORS if needed for your frontend domain/port
 origins = [
-    "http://localhost:4200"  # Angular dev server default
+    "http://localhost:4200" # Angular local frontend
 ]
 app.add_middleware(
     CORSMiddleware,
@@ -25,14 +25,12 @@ from app.routes import auth
 app.include_router(auth.router)
 
 
-# Database URL: "sqlite://./test.db"
-# DB_URL = os.getenv("DATABASE_URL", "sqlite://./test.db")
-DB_URL = "sqlite://./local.db"
-
+# Database configuration
+DB_URL = os.getenv("DATABASE_URL", "sqlite://./local.db")
 register_tortoise(
     app,
     db_url=DB_URL,
     modules={"models": ["app.models"]},
-    generate_schemas=True,  # Auto-generate tables for quick dev
+    generate_schemas=True,
     add_exception_handlers=True,
 )

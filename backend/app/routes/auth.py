@@ -1,7 +1,7 @@
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Header
 from app.schemas import UserCreate, UserLogin
 from app.models import User
-
+from app.services.auth_service import AuthService
 router = APIRouter()
 
 @router.post("/signup")
@@ -16,7 +16,8 @@ async def signup(user_data: UserCreate):
     )
     user.set_password(user_data.password)
     await user.save()
-    return {"message": "User created successfully"}
+    token = AuthService.create_jwt_token(user.id)
+    return {"access_token": token, "token_type": "bearer"}
 
 @router.post("/login")
 async def login(login_data: UserLogin):
@@ -24,11 +25,18 @@ async def login(login_data: UserLogin):
     if not user or not user.verify_password(login_data.password):
         raise HTTPException(status_code=400, detail="Invalid email or password")
     
-    # token = create_jwt_token(user.id)
-    # return {"access_token": token, "token_type": "bearer"}
-    return {"message": "User logged in successfully"}
+    token = AuthService.create_jwt_token(user.id)
+    return {"access_token": token, "token_type": "bearer"}
 
 @router.get("/users")
-async def get_users():
+async def get_users(authorization: str = Header(None)):
+    if authorization and authorization.startswith("Bearer "):
+        token = authorization.split(" ")[1]
+    else:
+        raise HTTPException(status_code=401, detail="Invalid authorization header format")
+
+    if not AuthService.verify_jwt_token(token):
+        raise HTTPException(status_code=401, detail="Invalid token")
+   
     users = await User.all()
-    return {"users": users}
+    return {"users": [{'id': user.id, 'name': user.name, 'email': user.email} for user in users]}
