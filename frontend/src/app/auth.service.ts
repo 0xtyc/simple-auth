@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly backendUrl = 'http://127.0.0.1:4000';
+  private readonly backendUrl = 'http://127.0.0.1:8000';
 
   getBackendUrl(): string {
     return this.backendUrl;

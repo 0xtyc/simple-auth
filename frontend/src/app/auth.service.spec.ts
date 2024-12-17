@@ -15,7 +15,7 @@ describe('AuthService', () => {
   });
 
   it('should return the backend URL', () => {
-    expect(service.getBackendUrl()).toBe('http://127.0.0.1:4000');
+    expect(service.getBackendUrl()).toBe('http://127.0.0.1:8000');
   });
 
   it('should store and retrieve the auth token', () => {
