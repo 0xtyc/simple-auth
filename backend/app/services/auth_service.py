@@ -3,7 +3,7 @@ from datetime import datetime, timedelta, timezone
 import os
 
 class AuthService:
-    SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+    SECRET_KEY = os.getenv("JWT_SECRET_KEY", "secret")
     ALGORITHM = "HS256"
 
     @staticmethod

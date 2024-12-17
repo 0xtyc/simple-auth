@@ -40,6 +40,7 @@ This repository contains both the backend and frontend of a full stack applicati
 
    ```plaintext
    DATABASE_URL=sqlite://./local.db
+   JWT_SECRET_KEY=secret
    ```
 
 5. **Run the Backend**
@@ -47,7 +48,7 @@ This repository contains both the backend and frontend of a full stack applicati
    Start the FastAPI server using Uvicorn:
 
    ```bash
-   uvicorn app.main:app --reload
+   uvicorn app.main:app
    ```
 
 6. **Access the Backend API**
@@ -82,7 +83,7 @@ This repository contains both the backend and frontend of a full stack applicati
    Start the development server:
 
    ```bash
-   ng serve
+   npm start
    ```
 
 4. **Access the Frontend**
@@ -94,5 +95,5 @@ This repository contains both the backend and frontend of a full stack applicati
    Execute the tests using Angular CLI:
 
    ```bash
-   ng test
+   npm test
    ```
