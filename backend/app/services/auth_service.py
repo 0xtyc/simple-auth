@@ -22,7 +22,7 @@ class AuthService:
         try:
             jwt.decode(token, AuthService.SECRET_KEY, algorithms=[AuthService.ALGORITHM])
             return True
-        except jwt.InvalidTokenError:
-            print("Invalid token", token)
-            print(jwt.decode(token, AuthService.SECRET_KEY, algorithms=[AuthService.ALGORITHM]))
+
+        except Exception as e:
+            print("Error verifying token", e)
             return False
