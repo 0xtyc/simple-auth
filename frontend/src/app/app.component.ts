@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
-import { LoginComponent } from './login/login.component';
-import { SignUpComponent } from './sign-up/sign-up.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +9,5 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 })
 
 export class AppComponent {
-  title = 'frontend';
+  title = 'Simple Auth';
 }

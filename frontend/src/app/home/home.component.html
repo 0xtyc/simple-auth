@@ -8,6 +8,13 @@
         <a href="/sign-up" class="button">Sign Up</a>
         <a href="/login" class="button">Login</a>
       </div>
+      <div class="button-group" *ngIf="isLoggedIn">
+        <button class="button" (click)="listUsers()" class="button">List Users</button>
+        <button class="button" (click)="logout()" class="button">Logout</button>
+        <ul>
+          <li *ngFor="let user of users">{{ user.name }} - {{ user.email }}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </main>
