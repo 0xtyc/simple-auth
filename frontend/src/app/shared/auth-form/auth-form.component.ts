@@ -80,7 +80,11 @@ export class AuthFormComponent {
         this.router.navigate(['/']);
       },
       error: (error) => {
-        this.errorMessage = 'Sign up failed. Please try again.';
+        if (error.status === 400) {
+          this.errorMessage = 'Sign up failed. Email already in use.';
+        } else {
+          this.errorMessage = 'An unexpected error occurred. Please try again.';
+        }
         console.error('Sign up error', error);
       }
     });
